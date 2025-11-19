@@ -19,11 +19,12 @@
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 550px;
+  border-left: 4px solid var(--primary-color);
 }
 
 .training-vertical-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0,102,255,0.15);
 }
 
 .training-vertical-card img {
@@ -42,7 +43,7 @@
 
 .training-content h3 {
   margin: 0 0 0.5rem;
-  color: #2d3748;
+  color: var(--dark-color);
 }
 
 .training-content p {
@@ -54,7 +55,7 @@
   list-style: none;
   padding: 0;
   margin-bottom: 1.5rem;
-  color: #2d3748;
+  color: var(--dark-color);
   font-size: 0.95rem;
 }
 
@@ -64,7 +65,7 @@
 
 .training-details i {
   margin-right: 0.5rem;
-  color: #6f42c1;
+  color: var(--primary-color);
 }
 
 .badge {
@@ -78,11 +79,11 @@
 }
 
 .badge.beginner {
-  background-color: #38a169;
+  background-color: var(--success-color);
 }
 
 .badge.intermediate {
-  background-color: #dd6b20;
+  background-color: var(--accent-color);
 }
 
 .badge.advanced {
@@ -90,21 +91,22 @@
 }
 
 .project-btn {
-  background-color: #6f42c1;
+  background-color: var(--primary-color);
   color: white;
   padding: 0.6rem 1.3rem;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .project-btn:hover {
-  background-color: #d63384;
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,102,255,0.2);
 }
 
-
-/*======================a gauche*/
+/*====================== HERO LINUX ======================*/
 
 html {
   scroll-behavior: smooth;
@@ -117,7 +119,7 @@ html {
 }
 
 .linux-hero {
-  background: linear-gradient(135deg, #6f42c1, #d63384);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   padding: 100px 20px;
   text-align: center;
@@ -141,20 +143,24 @@ html {
   display: flex;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
-  background: #ffe6f2;
-  color: #6f42c1;
+  background: var(--accent-color);
+  color: white;
   padding: 12px 30px;
   border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .btn-primary:hover {
-  background: white;
+  background: #ff5a20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,107,53,0.3);
 }
 
 .btn-secondary {
@@ -164,11 +170,62 @@ html {
   border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
-/*... et tout le reste du CSS que je t'ai donné ...*/
+/* Responsive */
+@media (max-width: 768px) {
+  .training-grid-vertical {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .training-vertical-card {
+    min-height: auto;
+  }
+  
+  .linux-hero {
+    padding: 60px 20px;
+  }
+  
+  .linux-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .linux-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .training-content {
+    padding: 1rem;
+  }
+  
+  .linux-hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .project-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
