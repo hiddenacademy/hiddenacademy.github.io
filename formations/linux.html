@@ -18,11 +18,31 @@ permalink: /formations/linux.html
 <section class="formation-info animated">
   <div class="container">
     <div class="info-grid">
-      <div class="info-card animated"><i class="fas fa-clock"></i><h3>Niveau requis</h3><p>Aucun prérequis technique</p></div>
-      <div class="info-card animated"><i class="fas fa-clock"></i><h3>Durée</h3><p>15 heures (5 sessions)</p></div>
-      <div class="info-card animated"><i class="fas fa-user-graduate"></i><h3>Niveau</h3><p>Débutant</p></div>
-      <div class="info-card animated"><i class="fas fa-laptop"></i><h3>Format</h3><p>Présentiel</p></div>
-      <div class="info-card highlight animated"><i class="fas fa-tag"></i><h3>Prix</h3><p>50 000 FCFA</p></div>
+      <div class="info-card animated">
+        <i class="fas fa-clock"></i>
+        <h3>Niveau requis</h3>
+        <p>Aucun prérequis technique</p>
+      </div>
+      <div class="info-card animated">
+        <i class="fas fa-clock"></i>
+        <h3>Durée</h3>
+        <p>15 heures (5 sessions)</p>
+      </div>
+      <div class="info-card animated">
+        <i class="fas fa-user-graduate"></i>
+        <h3>Niveau</h3>
+        <p>Débutant</p>
+      </div>
+      <div class="info-card animated">
+        <i class="fas fa-laptop"></i>
+        <h3>Format</h3>
+        <p>Présentiel</p>
+      </div>
+      <div class="info-card highlight animated">
+        <i class="fas fa-tag"></i>
+        <h3>Prix</h3>
+        <p>50 000 FCFA</p>
+      </div>
     </div>
   </div>
 </section>
@@ -90,16 +110,15 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Base layout */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Hero */
+/* HERO SECTION */
 .linux-hero {
-  background: linear-gradient(135deg, #6f42c1, #d63384);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   padding: 100px 20px;
   text-align: center;
@@ -111,52 +130,59 @@ html {
 }
 
 .linux-hero span {
-  color: #ffe6f2;
+  color: #e6f7ff;
 }
 
 .linux-hero p {
   font-size: 1.3rem;
   margin-bottom: 30px;
+  opacity: 0.95;
 }
 
 .cta-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
-  background: #ffe6f2;
-  color: #6f42c1;
-  padding: 12px 30px;
+  background: var(--accent-color);
+  color: white;
+  padding: 14px 32px;
   border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .btn-primary:hover {
-  background: white;
+  background: #ff5a20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 
 .btn-secondary {
-  border: 2px solid #fff;
-  color: #fff;
-  padding: 12px 30px;
+  border: 2px solid white;
+  color: white;
+  padding: 14px 32px;
   border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
-/* Info */
+/* FORMATION INFO */
 .formation-info {
   padding: 70px 0;
-  background: #fdfbff;
+  background: #f8fbff;
 }
 
 .info-grid {
@@ -166,12 +192,12 @@ html {
 }
 
 .info-card {
-  background: #fff;
+  background: white;
   border-radius: 16px;
   padding: 30px;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(111, 66, 193, 0.08);
-  transition: transform 0.3s;
+  box-shadow: 0 8px 25px rgba(0, 102, 255, 0.08);
+  transition: transform 0.3s ease;
 }
 
 .info-card:hover {
@@ -180,42 +206,55 @@ html {
 
 .info-card i {
   font-size: 2.2rem;
-  color: #6f42c1;
+  color: var(--primary-color);
   margin-bottom: 15px;
 }
 
 .info-card.highlight {
-  background: #6f42c1;
+  background: var(--primary-color);
   color: white;
 }
 
 .info-card.highlight i {
-  color: #ffe6f2;
+  color: #e6f7ff;
 }
 
-/* Programme */
+/* PROGRAMME SECTION */
 .formation-programme {
   padding: 80px 0;
-  background: #f5f0fa;
+  background: #f0f7ff;
 }
 
 .formation-programme h2 {
   text-align: center;
   margin-bottom: 40px;
-  color: #6f42c1;
+  color: var(--primary-color);
   font-size: 2rem;
 }
 
+.grid-2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
 .module {
-  background: #fff;
+  background: white;
   border-radius: 16px;
   padding: 30px;
   margin-bottom: 25px;
-  box-shadow: 0 6px 20px rgba(111, 66, 193, 0.07);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.07);
+  transition: transform 0.3s ease;
+  border-left: 4px solid var(--primary-color);
+}
+
+.module:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 102, 255, 0.12);
 }
 
 .module h3 {
-  color: #6f42c1;
+  color: var(--primary-color);
   margin-bottom: 15px;
   display: flex;
   align-items: center;
@@ -224,7 +263,7 @@ html {
 }
 
 .module h3 i {
-  color: #d63384;
+  color: var(--secondary-color);
 }
 
 .module ul {
@@ -234,16 +273,18 @@ html {
 .module li {
   margin-bottom: 10px;
   color: #333;
+  position: relative;
 }
 
-/* Sidebar */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-  align-items: start;
+.module li::before {
+  content: "▸";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: -15px;
 }
 
+/* SIDEBAR */
 .details-sidebar {
   display: flex;
   flex-direction: column;
@@ -254,23 +295,27 @@ html {
   background: white;
   border-radius: 16px;
   padding: 25px;
-  box-shadow: 0 6px 20px rgba(214, 51, 132, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.08);
+  transition: transform 0.3s ease;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.sidebar-card:hover {
+  transform: translateY(-3px);
 }
 
 .sidebar-card h3 {
-  color: #6f42c1;
+  color: var(--primary-color);
   margin-bottom: 15px;
   font-size: 1.1rem;
 }
 
-.checklist,
-.icon-list {
+.checklist, .icon-list {
   list-style: none;
   padding-left: 0;
 }
 
-.checklist li,
-.icon-list li {
+.checklist li, .icon-list li {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -279,56 +324,84 @@ html {
 }
 
 .checklist i {
-  color: #d63384;
+  color: var(--success-color);
 }
 
 .icon-list i {
-  color: #6f42c1;
+  color: var(--primary-color);
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 992px) {
   .grid-2 {
     grid-template-columns: 1fr;
   }
-
+  
   .details-sidebar {
     margin-top: 40px;
   }
-
+  
   .linux-hero h1 {
     font-size: 2rem;
   }
-
+  
   .cta-buttons {
     flex-direction: column;
     align-items: center;
   }
-
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+  
   .info-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Animation au scroll */
+@media (max-width: 480px) {
+  .linux-hero {
+    padding: 60px 20px;
+  }
+  
+  .linux-hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .module, .sidebar-card {
+    padding: 20px;
+  }
+}
+
+/* Animations */
 .animated {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
 }
+
 .animated.visible {
   opacity: 1;
   transform: none;
+}
+
+/* Variables CSS */
+:root {
+  --primary-color: #0066ff;
+  --secondary-color: #00c6ff;
+  --accent-color: #ff6b35;
+  --success-color: #28a745;
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const elements = document.querySelectorAll('.animated');
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if(entry.isIntersecting) {
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }
