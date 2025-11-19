@@ -44,3 +44,361 @@ layout: default
 
   </div>
 </article>
+
+<style>
+/* Variables CSS */
+:root {
+  --primary-color: #0066ff;
+  --secondary-color: #00c6ff;
+  --accent-color: #ff6b35;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --dark-color: #0f172a;
+  --light-bg: #f8fbff;
+  --card-bg: #ffffff;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --border-color: #e2e8f0;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* SINGLE POST */
+.single-post {
+  padding: 60px 0 80px;
+  background: var(--light-bg);
+  min-height: 100vh;
+}
+
+/* POST HEADER */
+.post-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.post-category {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.post-category.news {
+  background: var(--primary-color);
+}
+
+.post-category.tutorial {
+  background: var(--secondary-color);
+}
+
+.post-category.writeup {
+  background: var(--success-color);
+}
+
+.post-category.interview {
+  background: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.post-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  color: var(--dark-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.post-meta {
+  color: var(--text-light);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* POST IMAGE */
+.post-image {
+  margin-bottom: 40px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+}
+
+.post-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-image:hover img {
+  transform: scale(1.02);
+}
+
+/* POST CONTENT */
+.post-content {
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.08);
+  border: 1px solid var(--border-color);
+  margin-bottom: 50px;
+}
+
+.post-content h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1rem 0;
+  font-weight: 700;
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+}
+
+.post-content h3 {
+  color: var(--dark-color);
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem 0;
+  font-weight: 600;
+}
+
+.post-content p {
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.post-content strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.post-content em {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.post-content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  background: var(--light-bg);
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+  color: var(--text-dark);
+}
+
+.post-content code {
+  background: var(--light-bg);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: var(--primary-color);
+  font-size: 0.9em;
+  border: 1px solid var(--border-color);
+}
+
+.post-content pre {
+  background: var(--dark-color);
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid #334155;
+}
+
+.post-content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+  font-size: 0.95em;
+}
+
+.post-content a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.post-content a:hover {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 102, 255, 0.08);
+}
+
+.post-content th {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.post-content td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-dark);
+}
+
+.post-content tr:hover {
+  background: var(--light-bg);
+}
+
+/* POST NAVIGATION */
+.post-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.prev-post,
+.next-post {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 5px 20px rgba(0, 102, 255, 0.06);
+}
+
+.prev-post:hover,
+.next-post:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 25px rgba(0, 102, 255, 0.12);
+}
+
+.prev-post {
+  text-align: left;
+}
+
+.next-post {
+  text-align: right;
+}
+
+.prev-post strong,
+.next-post strong {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-top: 5px;
+  display: block;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .single-post {
+    padding: 40px 0 60px;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+  }
+  
+  .post-content {
+    padding: 30px 25px;
+  }
+  
+  .post-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .post-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .post-navigation {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .post-image img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .post-header {
+    padding: 0 10px;
+  }
+  
+  .post-title {
+    font-size: 1.7rem;
+  }
+  
+  .post-content {
+    padding: 25px 20px;
+  }
+  
+  .post-content p {
+    font-size: 1rem;
+  }
+  
+  .post-meta {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+.post-content * {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
