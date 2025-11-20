@@ -1,12 +1,10 @@
 title: Hidden Security Academy
+baseurl: ""
+url: "https://hiddenacademy.github.io"
 
 plugins:
-  - jekyll-assets
   - jekyll-paginate
+  - jekyll-assets
 
 paginate: 6
 paginate_path: "/blog/page:num"
-
-# 🔥 NOUVELLE CONFIGURATION pour https://hiddenacademy.github.io/
-baseurl: ""  # <- Doit être VIDE maintenant
-url: "https://hiddenacademy.github.io"  # <- Nouvelle URL
