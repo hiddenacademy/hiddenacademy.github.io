@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Énumération FTP : Guide Complet"
+title: "Énumération Nmap: Guide Complet"
 date: 2025-11-20
 categories: tutorial
 image: /assets/images/nmap-scan-result.png
