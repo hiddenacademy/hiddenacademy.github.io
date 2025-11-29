@@ -16,78 +16,57 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
   <!-- CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ctf.css" />
-
-  <!-- Favicon -->
   <link rel="icon" href="{{ site.baseurl }}/assets/img/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-  {% unless page.hide_nav %}
-    {% include navbar.html %}
-  {% endunless %}
-
+  {% unless page.hide_nav %}{% include navbar.html %}{% endunless %}
   <main>{{ content }}</main>
 
-  <!-- JS Scripts Asynchrones -->
-  <script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-  <script async src="{{ site.baseurl }}/assets/js/ctf.js"></script>
-  <script async src="{{ site.baseurl }}/assets/js/filters.js"></script>
+  <!-- JS Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/ctf.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
-  <!-- Mermaid Loader Optimisé -->
-  <script>
-    (function() {
-      const initMermaid = () => {
-        if (!window.mermaid) {
-          console.warn('Mermaid non chargé');
-          return;
-        }
-
+  <!-- Mermaid global loader -->
+ <script>
+(function() {
+    function initMermaid() {
         mermaid.initialize({
-          startOnLoad: true,
-          theme: 'dark',
-          securityLevel: 'loose',
-          themeVariables: {
-            background: 'transparent',
-            primaryColor: '#0ff',
-            primaryTextColor: '#0ff',
-            lineColor: '#0ff',
-            tertiaryColor: '#0ff',
-            fontFamily: 'monospace'
-          }
+            startOnLoad: true,
+            theme: "default",
+            securityLevel: "loose",
+            themeVariables: {
+                background: "transparent",       // fond transparent
+                primaryColor: "#0ff",           // couleur nodes
+                primaryTextColor: "#0ff",       // texte nodes
+                lineColor: "#0ff",              // couleur des liens
+                tertiaryColor: "#0ff",          // nodes secondaires si besoin
+                fontFamily: "monospace"         // texte hacker monospace
+            }
         });
+        mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
+    }
 
-        const mermaidElems = document.querySelectorAll('.mermaid, .language-mermaid');
-        if (mermaidElems.length) {
-          mermaid.init(undefined, mermaidElems);
-          console.log(`Mermaid initialisé sur ${mermaidElems.length} élément(s)`);
-        }
-      };
-
-      const loadMermaid = () => {
-        if (window.mermaid) return initMermaid();
-
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js';
-        script.async = true;
+    if (window.mermaid) {
+        initMermaid();
+    } else {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js";
         script.onload = initMermaid;
-        script.onerror = () => console.error('Erreur de chargement de Mermaid CDN');
         document.head.appendChild(script);
-      };
+    }
+})();
+</script>
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadMermaid);
-      } else {
-        loadMermaid();
-      }
-    })();
-  </script>
 
   {% include footer.html %}
 </body>
