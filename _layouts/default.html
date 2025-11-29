@@ -43,7 +43,10 @@
           mermaid.initialize({
               startOnLoad: true,
               theme: "default",
-              securityLevel: "loose"
+              securityLevel: "loose",
+              themeVariables: {
+                  background: "transparent"  // <-- Fond violet/rose supprimé
+              }
           });
           mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
       }
