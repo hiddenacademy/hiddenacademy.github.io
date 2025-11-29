@@ -37,30 +37,36 @@
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
   <!-- Mermaid global loader -->
-  <script>
-  (function() {
-      function initMermaid() {
-          mermaid.initialize({
-              startOnLoad: true,
-              theme: "default",
-              securityLevel: "loose",
-              themeVariables: {
-                  background: "transparent"  // <-- Fond violet/rose supprimé
-              }
-          });
-          mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
-      }
+ <script>
+(function() {
+    function initMermaid() {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "default",
+            securityLevel: "loose",
+            themeVariables: {
+                background: "transparent",       // fond transparent
+                primaryColor: "#0ff",           // couleur nodes
+                primaryTextColor: "#0ff",       // texte nodes
+                lineColor: "#0ff",              // couleur des liens
+                tertiaryColor: "#0ff",          // nodes secondaires si besoin
+                fontFamily: "monospace"         // texte hacker monospace
+            }
+        });
+        mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
+    }
 
-      if (window.mermaid) {
-          initMermaid();
-      } else {
-          const script = document.createElement("script");
-          script.src = "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js";
-          script.onload = initMermaid;
-          document.head.appendChild(script);
-      }
-  })();
-  </script>
+    if (window.mermaid) {
+        initMermaid();
+    } else {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js";
+        script.onload = initMermaid;
+        document.head.appendChild(script);
+    }
+})();
+</script>
+
 
   {% include footer.html %}
 </body>
