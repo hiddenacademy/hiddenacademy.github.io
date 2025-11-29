@@ -37,35 +37,71 @@
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
   <!-- Mermaid global loader -->
- <script>
+<!-- Mermaid Loader Optimisé pour Jekyll -->
+<script>
 (function() {
-    function initMermaid() {
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: "default",
-            securityLevel: "loose",
-            themeVariables: {
-                background: "transparent",       // fond transparent
-                primaryColor: "#0ff",           // couleur nodes
-                primaryTextColor: "#0ff",       // texte nodes
-                lineColor: "#0ff",              // couleur des liens
-                tertiaryColor: "#0ff",          // nodes secondaires si besoin
-                fontFamily: "monospace"         // texte hacker monospace
-            }
-        });
-        mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
+  const initMermaid = () => {
+    if (!window.mermaid) {
+      console.warn('Mermaid non chargé');
+      return;
     }
 
-    if (window.mermaid) {
-        initMermaid();
-    } else {
-        const script = document.createElement("script");
-        script.src = "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js";
-        script.onload = initMermaid;
-        document.head.appendChild(script);
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose',
+      themeVariables: {
+        background: 'transparent',
+        primaryColor: '#0ff',
+        primaryTextColor: '#0ff',
+        lineColor: '#0ff',
+        tertiaryColor: '#0ff',
+        fontFamily: 'monospace'
+      },
+      flowchart: {
+        curve: 'basis',
+        useMaxWidth: true
+      },
+      sequence: {
+        actorMargin: 50,
+        width: 150,
+        height: 65
+      },
+      svg: {
+        fontSize: 16
+      }
+    });
+
+    const mermaidElems = document.querySelectorAll('.mermaid, .language-mermaid');
+    if (mermaidElems.length) {
+      mermaidElems.forEach(el => {
+        el.style.maxWidth = '100%';
+        el.style.height = 'auto';
+        el.style.overflow = 'visible';
+      });
+      mermaid.init(undefined, mermaidElems);
+      console.log(`Mermaid initialisé sur ${mermaidElems.length} élément(s)`);
     }
+  };
+
+  const loadMermaid = () => {
+    if (window.mermaid) return initMermaid();
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js';
+    script.async = true;
+    script.onload = initMermaid;
+    script.onerror = () => console.error('Erreur de chargement de Mermaid CDN');
+    document.head.appendChild(script);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadMermaid);
+  } else {
+    loadMermaid();
+  }
 })();
 </script>
+
 
 
   {% include footer.html %}
