@@ -17,7 +17,10 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
   <!-- CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ctf.css" />
@@ -33,50 +36,36 @@
   <script src="{{ site.baseurl }}/assets/js/ctf.js"></script>
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
-  <!-- Mermaid Configuration Optimisée -->
-<!-- Mermaid Configuration Optimisée -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+  <!-- Mermaid global loader -->
+<!-- Mermaid Loader Optimisé pour Jekyll -->
+<!-- Mermaid propre & stable -->
+<!-- Mermaid stable & responsive -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
-window.addEventListener('load', function() {
-    mermaid.initialize({
-        startOnLoad: true,
-        theme: 'dark',
-        securityLevel: 'loose',
-        flowchart: {
-            useMaxWidth: false,
-            htmlLabels: true,
-            curve: 'basis',
-            width: '100%'
-        },
-        sequence: {
-            useMaxWidth: false,
-            width: '100%'
-        },
-        fontFamily: 'Poppins, sans-serif'
-    });
-    
-    setTimeout(function() {
-        mermaid.init(undefined, document.querySelectorAll('.language-mermaid, .mermaid'));
-        
-        // Détection automatique du besoin de scroll
-        document.querySelectorAll('.mermaid, .language-mermaid').forEach(diagram => {
-            const svg = diagram.querySelector('svg');
-            if (svg) {
-                const svgWidth = svg.getBoundingClientRect().width;
-                const containerWidth = diagram.parentElement.clientWidth;
-                
-                if (svgWidth > containerWidth - 100) {
-                    diagram.parentElement.classList.add('mermaid-scrollable');
-                }
-                
-                const svgHeight = svg.getBoundingClientRect().height;
-                if (svgHeight > 500) {
-                    diagram.parentElement.classList.add('mermaid-vertical-scroll');
-                }
-            }
-        });
-    }, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "dark",
+    securityLevel: "loose",
+    flowchart: {
+      useMaxWidth: true, // IMPORTANT pour adapter à la largeur
+      htmlLabels: true,
+      curve: "basis"
+    },
+    svg: {
+      fontSize: 16
+    }
+  });
+
+  // Ajuste tous les diagrammes existants
+  document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
+    el.style.maxWidth = "100%";
+    el.style.height = "auto";
+    el.style.overflow = "visible";
+  });
 });
 </script>
+
+
 </body>
 </html>
