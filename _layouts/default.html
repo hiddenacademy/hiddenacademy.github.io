@@ -34,25 +34,49 @@
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
   <!-- Mermaid Configuration Optimisée -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-  <script>
-    window.addEventListener('load', function() {
-      mermaid.initialize({
+<!-- Mermaid Configuration Optimisée -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>
+window.addEventListener('load', function() {
+    mermaid.initialize({
         startOnLoad: true,
         theme: 'dark',
         securityLevel: 'loose',
         flowchart: {
-          useMaxWidth: false,
-          htmlLabels: true,
-          curve: 'basis'
+            useMaxWidth: false,
+            htmlLabels: true,
+            curve: 'basis',
+            width: '100%'
+        },
+        sequence: {
+            useMaxWidth: false,
+            width: '100%'
         },
         fontFamily: 'Poppins, sans-serif'
-      });
-      
-      setTimeout(function() {
-        mermaid.init(undefined, document.querySelectorAll('.language-mermaid, .mermaid'));
-      }, 100);
     });
-  </script>
+    
+    setTimeout(function() {
+        mermaid.init(undefined, document.querySelectorAll('.language-mermaid, .mermaid'));
+        
+        // Détection automatique du besoin de scroll
+        document.querySelectorAll('.mermaid, .language-mermaid').forEach(diagram => {
+            const svg = diagram.querySelector('svg');
+            if (svg) {
+                const svgWidth = svg.getBoundingClientRect().width;
+                const containerWidth = diagram.parentElement.clientWidth;
+                
+                if (svgWidth > containerWidth - 100) {
+                    diagram.parentElement.classList.add('mermaid-scrollable');
+                }
+                
+                const svgHeight = svg.getBoundingClientRect().height;
+                if (svgHeight > 500) {
+                    diagram.parentElement.classList.add('mermaid-vertical-scroll');
+                }
+            }
+        });
+    }, 500);
+});
+</script>
 </body>
 </html>
