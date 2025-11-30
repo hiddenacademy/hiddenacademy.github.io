@@ -576,9 +576,5 @@ nav a {
     overflow-x: auto !important;
   }
 
-  /* Correction pour le thème dark */
-  .mermaid .label {
-    text-align: center !important;
-    font-family: 'Poppins', sans-serif !important;
-  }
+  
 </style>
