@@ -40,15 +40,17 @@
 <!-- Mermaid Loader Optimisé pour Jekyll -->
 <!-- Mermaid propre & stable -->
 <!-- Mermaid stable & responsive -->
+<!-- Mermaid Loader Optimisé -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialisation Mermaid
   mermaid.initialize({
     startOnLoad: true,
-    theme: "dark",
+    theme: "neutral",          // neutre → pas de fond noir
     securityLevel: "loose",
     flowchart: {
-      useMaxWidth: true, // IMPORTANT pour adapter à la largeur
+      useMaxWidth: true,
       htmlLabels: true,
       curve: "basis"
     },
@@ -57,14 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Ajuste tous les diagrammes existants
+  // Ajustements CSS pour tous les diagrammes
   document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
-    el.style.maxWidth = "100%";
-    el.style.height = "auto";
-    el.style.overflow = "visible";
+    el.style.maxWidth = "100%";     // largeur maximale du conteneur
+    el.style.height = "auto";       // hauteur automatique
+    el.style.margin = "0 auto";     // centre horizontalement
+    el.style.display = "block";     // s'assure que margin fonctionne
+    el.style.overflow = "visible";  // aucune coupure
   });
 });
 </script>
+
 
 
 </body>
