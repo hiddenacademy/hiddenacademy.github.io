@@ -17,10 +17,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <!-- CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ctf.css" />
@@ -39,76 +36,23 @@
   <!-- Mermaid Configuration Optimisée -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
   <script>
-    // Initialisation différée pour GitHub Pages
     window.addEventListener('load', function() {
-      // Configuration Mermaid
       mermaid.initialize({
         startOnLoad: true,
+        theme: 'dark',
         securityLevel: 'loose',
         flowchart: {
-          useMaxWidth: false,  // IMPORTANT: désactivé pour meilleur contrôle
+          useMaxWidth: false,
           htmlLabels: true,
           curve: 'basis'
         },
         fontFamily: 'Poppins, sans-serif'
       });
       
-      // Forcer le rendu
       setTimeout(function() {
         mermaid.init(undefined, document.querySelectorAll('.language-mermaid, .mermaid'));
-        
-        // Correction manuelle du centrage
-        document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
-          const svg = el.querySelector('svg');
-          if (svg) {
-            svg.style.display = 'block';
-            svg.style.margin = '0 auto';
-            svg.style.maxWidth = '90%';
-          }
-        });
       }, 100);
     });
   </script>
-
-  <style>
-    /* CORRECTION CSS POUR CENTRAGE */
-    .mermaid, .language-mermaid {
-      display: block !important;
-      text-align: center !important;
-      margin: 30px auto !important;
-      padding: 20px !important;
-      background: transparent !important;
-      overflow: visible !important;
-      width: 100% !important;
-    }
-
-    .mermaid svg, .language-mermaid svg {
-      display: block !important;
-      margin: 0 auto !important;
-      max-width: 90% !important;
-      height: auto !important;
-      transform: translateX(0) !important;
-    }
-
-    /* Correction spécifique pour Jekyll */
-    .highlighter-rouge .mermaid {
-      background: transparent !important;
-      border: none !important;
-      padding: 20px !important;
-    }
-
-    /* Container optionnel pour meilleur contrôle */
-    .mermaid-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      margin: 25px 0;
-      padding: 20px;
-      background: rgba(245, 245, 245, 0.7);
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-  </style>
 </body>
 </html>
