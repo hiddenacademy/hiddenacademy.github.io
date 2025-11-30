@@ -60,50 +60,53 @@
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
   <!-- Mermaid Configuration Optimisée -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-  <script>
-    // Initialisation différée pour s'assurer que le DOM est complètement chargé
-    function initializeMermaid() {
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: 'dark',
-        securityLevel: 'loose',
-        flowchart: {
-          useMaxWidth: true,
-          htmlLabels: true,
-          curve: 'basis'
-        },
-        sequence: {
-          useMaxWidth: true,
-          showSequenceNumbers: false
-        },
-        themeCSS: `
-          .mermaid .label {
-            color: #ffffff !important;
-          }
-        `
-      });
-      
-      // Forcer le rendu de tous les diagrammes Mermaid
-      mermaid.run({
-        querySelector: '.language-mermaid, .mermaid',
-        nodes: document.querySelectorAll('.language-mermaid, .mermaid')
-      }).catch(error => {
-        console.warn('Mermaid rendering warning:', error);
-      });
-    }
-
-    // Différentes méthodes pour s'assurer que Mermaid s'initialise correctement
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeMermaid);
-    } else {
-      initializeMermaid();
-    }
-
-    // Re-rendre après le chargement complet de la page
-    window.addEventListener('load', function() {
-      setTimeout(initializeMermaid, 100);
+<!-- Mermaid Configuration Optimisée -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>
+  // Initialisation différée pour GitHub Pages
+  window.addEventListener('load', function() {
+    // Configuration Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      },
+      fontFamily: 'Poppins, sans-serif'
     });
-  </script>
+    
+    // Forcer le rendu après un délai pour s'assurer que tout est chargé
+    setTimeout(function() {
+      mermaid.init(undefined, document.querySelectorAll('.language-mermaid, .mermaid'));
+    }, 100);
+  });
+</script>
+
+<style>
+  /* Styles CSS pour les diagrammes Mermaid */
+  .mermaid {
+    background: transparent;
+    margin: 20px 0;
+    text-align: center;
+    max-width: 100%;
+    overflow: visible;
+  }
+  
+  .mermaid svg {
+    max-width: 100%;
+    height: auto !important;
+  }
+  
+  /* Container pour le responsive */
+  .mermaid-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+    margin: 20px 0;
+  }
+</style>
 </body>
 </html>
