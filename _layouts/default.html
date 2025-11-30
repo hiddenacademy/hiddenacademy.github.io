@@ -17,10 +17,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <!-- CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ctf.css" />
@@ -36,36 +33,32 @@
   <script src="{{ site.baseurl }}/assets/js/ctf.js"></script>
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
-  <!-- Mermaid global loader -->
-<!-- Mermaid Loader Optimisé pour Jekyll -->
-<!-- Mermaid propre & stable -->
-<!-- Mermaid stable & responsive -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: "dark",
-    securityLevel: "loose",
-    flowchart: {
-      useMaxWidth: true, // IMPORTANT pour adapter à la largeur
-      htmlLabels: true,
-      curve: "basis"
-    },
-    svg: {
-      fontSize: 16
-    }
+  <!-- Mermaid stable & responsive -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "dark",
+      securityLevel: "loose",
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: "basis"
+      },
+      svg: {
+        fontSize: 16
+      }
+    });
+
+    document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
+      el.style.maxWidth = "100%";
+      el.style.height = "auto";
+      el.style.overflow = "visible";
+    });
   });
+  </script>
 
-  // Ajuste tous les diagrammes existants
-  document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
-    el.style.maxWidth = "100%";
-    el.style.height = "auto";
-    el.style.overflow = "visible";
-  });
-});
-</script>
-
-
+  {% include footer.html %}
 </body>
 </html>
