@@ -533,48 +533,55 @@ nav a {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 } 
 /*  ==================== Mermaid    */
-<style>
-  /* Correction spécifique pour le centrage Mermaid */
-  .mermaid {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 20px auto !important;
-    padding: 10px !important;
-    text-align: center !important;
-    background: transparent !important;
-    overflow: visible !important;
-  }
+/* ===== CORRECTION MERMAID ===== */
+.mermaid {
+  display: block !important;
+  text-align: center !important;
+  margin: 30px auto !important;
+  padding: 20px !important;
+  background: transparent !important;
+  overflow: visible !important;
+  width: 100% !important;
+}
 
-  .mermaid svg {
-    display: block !important;
-    margin: 0 auto !important;
-    max-width: 100% !important;
-    height: auto !important;
-  }
+.mermaid svg {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 90% !important;
+  height: auto !important;
+}
 
-  /* Pour les blocs de code Mermaid générés par Jekyll */
-  .language-mermaid, .highlighter-rouge .mermaid {
-    display: flex !important;
-    justify-content: center !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 20px !important;
-    margin: 20px auto !important;
-  }
+/* Pour les blocs de code Mermaid générés par Jekyll */
+.language-mermaid, 
+.highlighter-rouge .mermaid {
+  background: transparent !important;
+  border: none !important;
+  padding: 20px !important;
+  margin: 20px auto !important;
+  text-align: center !important;
+}
 
-  /* Container de centrage forcé */
-  .mermaid-container {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    margin: 30px 0 !important;
-    padding: 15px !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 8px !important;
-    overflow-x: auto !important;
-  }
+/* Container de centrage */
+.mermaid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-  
-</style>
+.mermaid-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 25px 0;
+  padding: 20px;
+  background: rgba(30, 30, 30, 0.7);
+  border-radius: 10px;
+  border: 1px solid #444;
+}
