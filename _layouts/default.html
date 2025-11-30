@@ -39,16 +39,33 @@
   <!-- Mermaid global loader -->
 <!-- Mermaid Loader Optimisé pour Jekyll -->
 <!-- Mermaid propre & stable -->
+<!-- Mermaid stable & responsive -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   mermaid.initialize({
     startOnLoad: true,
     theme: "dark",
-    securityLevel: "loose"
+    securityLevel: "loose",
+    flowchart: {
+      useMaxWidth: true, // IMPORTANT pour adapter à la largeur
+      htmlLabels: true,
+      curve: "basis"
+    },
+    svg: {
+      fontSize: 16
+    }
+  });
+
+  // Ajuste tous les diagrammes existants
+  document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
+    el.style.maxWidth = "100%";
+    el.style.height = "auto";
+    el.style.overflow = "visible";
   });
 });
 </script>
+
 
 </body>
 </html>
