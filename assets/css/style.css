@@ -533,8 +533,52 @@ nav a {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 } 
 /*  ==================== Mermaid    */
-.mermaid {
-  max-width: 100%;
-  height: auto;
-  overflow: visible;
-}
+<style>
+  /* Correction spécifique pour le centrage Mermaid */
+  .mermaid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 20px auto !important;
+    padding: 10px !important;
+    text-align: center !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  .mermaid svg {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Pour les blocs de code Mermaid générés par Jekyll */
+  .language-mermaid, .highlighter-rouge .mermaid {
+    display: flex !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 20px !important;
+    margin: 20px auto !important;
+  }
+
+  /* Container de centrage forcé */
+  .mermaid-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 30px 0 !important;
+    padding: 15px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+    overflow-x: auto !important;
+  }
+
+  /* Correction pour le thème dark */
+  .mermaid .label {
+    text-align: center !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+</style>
