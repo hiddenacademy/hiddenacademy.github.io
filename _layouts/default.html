@@ -25,6 +25,29 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ctf.css" />
   <link rel="icon" href="{{ site.baseurl }}/assets/img/favicon.ico" type="image/x-icon" />
+  
+  <!-- Mermaid CSS pour le rendu -->
+  <style>
+    .mermaid {
+      background: transparent;
+      margin: 20px 0;
+      text-align: center;
+      max-width: 100%;
+      overflow: auto;
+    }
+    
+    .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+    
+    /* Correction pour l'affichage responsive */
+    .mermaid-container {
+      width: 100%;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -36,36 +59,51 @@
   <script src="{{ site.baseurl }}/assets/js/ctf.js"></script>
   <script src="{{ site.baseurl }}/assets/js/filters.js"></script>
 
-  <!-- Mermaid global loader -->
-<!-- Mermaid Loader Optimisé pour Jekyll -->
-<!-- Mermaid propre & stable -->
-<!-- Mermaid stable & responsive -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: "dark",
-    securityLevel: "loose",
-    flowchart: {
-      useMaxWidth: true, // IMPORTANT pour adapter à la largeur
-      htmlLabels: true,
-      curve: "basis"
-    },
-    svg: {
-      fontSize: 16
+  <!-- Mermaid Configuration Optimisée -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+  <script>
+    // Initialisation différée pour s'assurer que le DOM est complètement chargé
+    function initializeMermaid() {
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        securityLevel: 'loose',
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'basis'
+        },
+        sequence: {
+          useMaxWidth: true,
+          showSequenceNumbers: false
+        },
+        themeCSS: `
+          .mermaid .label {
+            color: #ffffff !important;
+          }
+        `
+      });
+      
+      // Forcer le rendu de tous les diagrammes Mermaid
+      mermaid.run({
+        querySelector: '.language-mermaid, .mermaid',
+        nodes: document.querySelectorAll('.language-mermaid, .mermaid')
+      }).catch(error => {
+        console.warn('Mermaid rendering warning:', error);
+      });
     }
-  });
 
-  // Ajuste tous les diagrammes existants
-  document.querySelectorAll('.mermaid, .language-mermaid').forEach(el => {
-    el.style.maxWidth = "100%";
-    el.style.height = "auto";
-    el.style.overflow = "visible";
-  });
-});
-</script>
+    // Différentes méthodes pour s'assurer que Mermaid s'initialise correctement
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeMermaid);
+    } else {
+      initializeMermaid();
+    }
 
-
+    // Re-rendre après le chargement complet de la page
+    window.addEventListener('load', function() {
+      setTimeout(initializeMermaid, 100);
+    });
+  </script>
 </body>
 </html>
